@@ -48,16 +48,16 @@ import { useState } from 'react'
 
 const App = () => {
   const [loading, setLoading] = useRefState(false)
-  const [state, setState] = useState(false)
+  const [loadingReact, setLoadingReact] = useState(false)
   
   // DO NOT destructure like this
   const [{ current }] = useRefState()
   
   const onClick = () => {
     setLoading(true)
-    setState(true)
+    setLoadingReact(true)
     console.log('loading.current', loading.current) // gives us `true`
-    console.log('state', state) // gives us `false`
+    console.log('loadingReact', loadingReact) // gives us `false`
   }
 
   return (
