@@ -1,6 +1,6 @@
 {
   "name": "urs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "🔥 React hook for maintaining correct values, in a clean way",
   "main": "dist/useRefState.js",
   "homepage": "https://github.com/ava/urs#readme",
