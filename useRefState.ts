@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useEffect } from 'react'
+import { useCallback, useRef, useState, useEffect, MutableRefObject, Dispatch, SetStateAction } from 'react'
 
 /**
  * Determines if the given param is an object. {}
@@ -17,10 +17,13 @@ const useMounted = () => {
   return mounted
 }
 
-export const useRefState = (defaultState: any, blockIfUnmounted: boolean = true) => {
+export function useRefState<S>(
+  initialState: S | (() => S) | undefined,
+  blockIfUnmounted: boolean = true
+): [MutableRefObject<S | undefined>, Dispatch<SetStateAction<S | undefined>>] {
   const mounted = useMounted()
-  const state = useRef(defaultState)
-  const setReactState = useState(state.current)[1]
+  const [reactState, setReactState] = useState(initialState)
+  const state = useRef(reactState)
   const setState = useCallback(arg => {
     if (!mounted.current && blockIfUnmounted) return
     state.current = (typeof arg === 'function') ? arg(state.current) : arg
