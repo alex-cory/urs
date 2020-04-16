@@ -55,7 +55,7 @@ const App = () => {
     console.log('state.current', state.current) // gives us { no: 'way' }
     // whereas if it were a normal `setState` it would be `undefined`
 
-    // BUT, the caveat is you have to do `state.whatever`
+    // BUT, the caveat is you have to do `state.current.whatever`
     // you CANNOT destructure like: `const [{ current }, setState] = useState()`
   }
 
