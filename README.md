@@ -24,6 +24,8 @@
 Features
 --------
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alex-cory/urs.svg)](https://greenkeeper.io/)
+
 - TypeScript support
 - Zero dependencies
 - React Native support
