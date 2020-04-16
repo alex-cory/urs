@@ -44,19 +44,20 @@ Usage
 
 ```jsx
 import useRefState from 'urs'
+import { useState } from 'react'
 
 const App = () => {
-  const [state, setState] = useRefState()
-
+  const [loading, setLoading] = useRefState(false)
+  const [state, setState] = useState(false)
+  
+  // DO NOT destructure like this
+  const [{ current }] = useRefState()
+  
   const onClick = () => {
-    setState({ no: 'way' })
-
-    // to get the actual state you must do
-    console.log('state.current', state.current) // gives us { no: 'way' }
-    // whereas if it were a normal `setState` it would be `undefined`
-
-    // BUT, the caveat is you have to do `state.current.whatever`
-    // you CANNOT destructure like: `const [{ current }, setState] = useState()`
+    setLoading(true)
+    setState(true)
+    console.log('loading.current', loading.current) // gives us `true`
+    console.log('state', state) // gives us `false`
   }
 
   return (
