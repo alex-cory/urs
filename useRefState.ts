@@ -23,7 +23,7 @@ export function useRefState<S>(
 ): [MutableRefObject<S>, Dispatch<SetStateAction<S>>] {
   const mounted = useMounted()
   const [reactState, setReactState] = useState(initialState)
-  const state = useRef(reactState)
+  const state = useRef(initialState)
   const setState = useCallback(arg => {
     if (!mounted.current && blockIfUnmounted) return
     state.current = (typeof arg === 'function') ? arg(state.current) : arg
