@@ -5,10 +5,10 @@
   "main": "dist/useRefState.js",
   "homepage": "https://github.com/ava/urs#readme",
   "scripts": {
-    "dev": "rm -rf dist && parcel examples/index.html --open",
-    "build": "rm -rf dist && ./node_modules/.bin/tsc --module CommonJS",
+    "dev": "rimraf dist && parcel examples/index.html --open",
+    "build": "rimraf dist && tsc --module CommonJS",
     "build:production": "yarn build -p tsconfig.production.json",
-    "build:watch": "rm -rf dist && tsc -w --module CommonJS",
+    "build:watch": "rimraf dist && tsc -w --module CommonJS",
     "prepublishOnly": "yarn test && yarn build:production",
     "test": "tsc -p . --noEmit && tsc -p . && jest --env=jsdom useRefState.test.ts",
     "test:browser:watch": "tsc -p . --noEmit && tsc -p . && jest --watch --env=jsdom useRefState.test.ts"
@@ -47,6 +47,7 @@
     "react-native-typescript-transformer": "^1.2.13",
     "react-test-renderer": "^16.13.1",
     "react-testing-library": "^8.0.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.3.0",
     "typescript": "^3.8.3"
   },
