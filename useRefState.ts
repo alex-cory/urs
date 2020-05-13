@@ -20,10 +20,10 @@ const useMounted = () => {
 export function useRefState<S>(
   initialState: S | (() => S),
   blockIfUnmounted: boolean = true
-): [MutableRefObject<S | (() => S)>, Dispatch<SetStateAction<S>>] {
+): [MutableRefObject<S>, Dispatch<SetStateAction<S>>] {
   const mounted = useMounted()
   const [reactState, setReactState] = useState(initialState)
-  const state = useRef(initialState)
+  const state = useRef(reactState)
   const setState = useCallback(arg => {
     if (!mounted.current && blockIfUnmounted) return
     state.current = (typeof arg === 'function') ? arg(state.current) : arg
