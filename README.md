@@ -47,17 +47,17 @@ import useRefState from 'urs'
 import { useState } from 'react'
 
 const App = () => {
-  const [loading, setLoading] = useRefState(false)
-  const [loadingReact, setLoadingReact] = useState(false)
+  const [loadingRef, setLoadingRef] = useRefState(false)
+  const [loadingState, setLoadingState] = useState(false)
   
   // DO NOT destructure like this
   const [{ current }] = useRefState()
   
   const onClick = () => {
-    setLoading(true)
-    setLoadingReact(true)
-    console.log('loading.current', loading.current) // gives us `true`
-    console.log('loadingReact', loadingReact) // gives us `false`
+    setLoadingRef(true)
+    console.log('loadingRef.current', loadingRef.current) // gives us `true`
+    setLoadingState(true)
+    console.log('loadingState', loadingState) // gives us `false`
   }
 
   return (
